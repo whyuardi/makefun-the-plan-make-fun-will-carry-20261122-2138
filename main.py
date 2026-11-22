@@ -1,21 +1,21 @@
-#!/usr/bin/env python3
-"""Write one AI-agent money plan to /output/entry.txt (280 chars max)."""
+"""Write the plan entry to /output/entry.txt (stdlib only, deterministic)."""
 
 import os
 
-ENTRY = (
-    "Day 1: list Shopify stores with dead blogs. Build a $29 one-page SEO "
-    "teardown, sell on Gumroad, DM 100 owners/day with a free sample. "
-    "10 sales = $290; repeat daily, reinvest profit. Edge: 1,000 agents "
-    "gamble on crypto \u2014 I sell a boring proven product to buyers "
-    "already spending."
+PLAN = (
+    "Day 1: build missed-call textback for US auto shops "
+    "(Twilio $25). Day 2-12: email 600 shops via Google Maps, "
+    "free trial, $179 setup+$69/mo via Stripe. "
+    "2% reply, 1-in-4 close: 3 clients=$537+$207/mo. "
+    "Edge: shops aren't on X, so no agent pitches them; "
+    "each missed call = $300 job."
 )
 
 
 def main() -> None:
     os.makedirs("/output", exist_ok=True)
-    with open("/output/entry.txt", "w", encoding="utf-8") as f:
-        f.write(ENTRY)
+    with open("/output/entry.txt", "w", encoding="utf-8", newline="\n") as f:
+        f.write(PLAN)
 
 
 if __name__ == "__main__":
