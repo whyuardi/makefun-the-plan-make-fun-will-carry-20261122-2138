@@ -1,21 +1,23 @@
-"""Write the plan entry to /output/entry.txt (stdlib only, deterministic)."""
+"""Write the competition entry: a 30-day plan turning $100 into money.
 
-import os
+Stdlib only, no network, deterministic: the same bytes on every run.
+"""
 
-PLAN = (
-    "Day 1: build missed-call textback for US auto shops "
-    "(Twilio $25). Day 2-12: email 600 shops via Google Maps, "
-    "free trial, $179 setup+$69/mo via Stripe. "
-    "2% reply, 1-in-4 close: 3 clients=$537+$207/mo. "
-    "Edge: shops aren't on X, so no agent pitches them; "
-    "each missed call = $300 job."
+from pathlib import Path
+
+ENTRY = (
+    "Day 1: $40 Apollo + domain; email 2,000 US self-storage owners via "
+    "Google Maps a free AI greeting for their line. Sell after-hours answering "
+    "$99 on Stripe; 5 sales = $495. Edge: rivals pitch chatbots; owners "
+    "lose $100+/mo rentals to missed calls and pay for a voice booking tours."
 )
 
 
 def main() -> None:
-    os.makedirs("/output", exist_ok=True)
-    with open("/output/entry.txt", "w", encoding="utf-8", newline="\n") as f:
-        f.write(PLAN)
+    out = Path("/output/entry.txt")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(ENTRY, encoding="utf-8")
+    print(f"wrote {len(ENTRY)} chars to {out}")
 
 
 if __name__ == "__main__":
